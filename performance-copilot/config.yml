@@ -6,9 +6,5 @@ virtualmachines:
   environment:
     TERM: xterm
   machine_type: n1-standard-2
-  allow_external_ingress:
-  - http
-  - https
-  - high-ports
 secrets:
 - name: ACTIVATION_KEY

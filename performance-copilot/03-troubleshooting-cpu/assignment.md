@@ -38,7 +38,7 @@ killall stress-ng
 
 <pre class="file>
 # killall stress-ng
-# 
+#
 </pre>
 
 Wait several seconds, then refer back to the htop output. You will notice that the CPU utilization has returned to an idle state:

@@ -1,0 +1,38 @@
+slug: idm-workshop
+id: 2pummbuzqq4i
+title: Identity Management Workshop
+teaser: Learn the basics of Red Hat Identity Manager.
+description: |
+  # Overview:
+  Identity Management (IdM) in Red Hat Enterprise Linux provides a centralized and unified way to manage identity stores, authentication, policies, and authorization policies in a Linux-based domain.
+
+  This is a workshop lab. It is estimated to take 4 hours. This lab is provisioned with a lifetime of 8 hours.
+
+  # Goal:
+
+  Configure Identity Manager for users, groups, hosts and services.
+
+  # Concepts included in this scenario:
+
+  * Deploy the Identity Management Server
+  * Enrol a client machine to the realm
+  * User management and Kerberos authentication
+  * Host based access control (HBAC)
+  * Sudo rule management
+
+  # Alternative Labs
+
+  * SELinux user maps
+  * Web application authentication and authorization
+  * Service certificates
+  * Replica installation
+  * SSH user and host key management
+  * Kerberos ticket policy
+  * External IdP support
+icon: https://storage.googleapis.com/instruqt-frontend/img/tracks/default.png
+tags: []
+owner: rhel
+developers:
+- parmstro@redhat.com
+show_timer: true
+checksum: "10440479569252573504"

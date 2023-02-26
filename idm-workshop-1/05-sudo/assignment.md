@@ -22,11 +22,8 @@ tabs:
 - title: IdM Client
   type: terminal
   hostname: idmclient
-- title: IdM Client Webserver
-  type: website
-  url: https://idmclient.${_SANDBOX_ID}.instruqt.io
 difficulty: basic
-timelimit: 1200
+timelimit: 5760
 ---
 <!-- markdownlint-disable MD033 -->
 ## Welcome to challenge 5
@@ -163,8 +160,8 @@ ipa sudorule-add admins_allow_all \
   --hostcat="all" \
   --cmdcat="all" \
   --runasusercat="all" \
-  --runasgroupcat="all" \
-  --order=10
+  --runasgroupcat="all"
+
 ```
 
 Now add the admins to the sudo rule.
@@ -193,6 +190,11 @@ Try again to edit the /etc/motd file and provide the password for ***alice***
 ```bash
  sudo vim /etc/motd
 ```
+
+What happens? Are you allowed access?
+If you are not allowed, wait for about 5 minutes, or go to the client machine tab and run ``systemctl restart sssd`` to force .
+
+Try again...
 
 <pre class="file" style="white-space: pre-wrap; font-family:monospace;">
 We Now have sudo access!
@@ -286,7 +288,7 @@ ipa sudocmdgroup-add-member webadmin_cmds \
     --sudocmds "/usr/bin/systemctl start httpd" \
     --sudocmds "/usr/bin/systemctl restart httpd" \
     --sudocmds "/usr/bin/systemctl stop httpd"
-    
+
 ```
 
 Now we can add the command group to our sudo rule.
@@ -298,16 +300,22 @@ ipa sudorule-add-allow-command webadmin_sudo \
 
 #### Exercise 5.2.3 - Verify sudo access for webadmins.
 
-If we login as bob again, we find that we can run su -l
-
-```bash
-su -l bob
-```
+Login to the idmclient from the idmserver as bob again using ssh.
 
 Verify that bob can restart the web server
 ```bash
 sudo systemctl restart httpd
 ```
+
+Remember if you don't want to wait for the timeout go to the IdMClient terminal and restart sssd.
+Try again.
+
+
+Verify that bob restarted the web server...
+```bash
+sudo systemctl startus httpd
+```
+Is there a problem?
 
 Verify that bob can't run other commands as root
 ```bash
@@ -317,7 +325,15 @@ sudo id
 Sorry, user bob is not allowed to execute '/bin/id' as root on
 </pre>
 
-This concludes the unit 5 and this Lab - future editions of the lab will provide additional sections on:
+> NOTE: The solution for ***Exercise 5.2.1*** command line example is below.
+
+
+<hr>
+
+This concludes the unit 5 and IdM Workshop - Part I, your Red Hat Team thanks you for participating!
+
+
+If you are interested in more, IdM Workshop - Part II covers the following:
 
 - Replica Deployment
 - Certificate and Service Management
@@ -326,6 +342,7 @@ This concludes the unit 5 and this Lab - future editions of the lab will provide
 - Integrating with External IDPs
 - and much more.
 
+You can let us know how you enjoyed the workshop on the next page.
 
 <hr>
 
@@ -381,3 +398,17 @@ ipa hbacrule-add-service allow_webadmins_webservers_sshd \
     --hbacsvcs=sudo \
     --hbacsvcs=su-l
 ```
+Test the hbac rule for ***bob***
+
+```bash
+ipa hbactest --user=bob --host=idmclient.[[ Instruqt-Var key="domain" hostname="idmserver" ]] --service=sshd
+```
+<pre class="file" style="white-space: pre-wrap; font-family:monospace;">
+ipa hbactest --user=bob --host=idmclient.[[ Instruqt-Var key="domain" hostname="idmserver" ]] --service=sshd
+--------------------
+Access granted: True
+--------------------
+  Matched rules: allow_webadmins_webservers_sshd
+  Not matched rules: admins_allow_all
+  Not matched rules: allow_systemd-user
+</pre>

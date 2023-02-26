@@ -33,7 +33,7 @@ tabs:
   type: terminal
   hostname: idmclient
 difficulty: basic
-timelimit: 1200
+timelimit: 5760
 ---
 <!-- markdownlint-disable MD033 -->
 ## Welcome to challenge 3

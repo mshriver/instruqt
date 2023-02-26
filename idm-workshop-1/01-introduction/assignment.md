@@ -36,7 +36,7 @@ tabs:
   type: external
   url: https://idmserver.${_SANDBOX_ID}.instruqt.io/ipa/ui/
 difficulty: basic
-timelimit: 1200
+timelimit: 5760
 ---
 <!-- markdownlint-disable MD033 -->
 ## Welcome to the Identity Management Workshop
@@ -46,7 +46,6 @@ timelimit: 1200
 The lab environment will consist of the following:
 
 - 1 Red Hat Identity Management (IdM) server
-- 1 IdM replica server
 - 1 IdM client
 
 You are logged into the consoles with root access by the environment. A local user account has also been created that you can use:

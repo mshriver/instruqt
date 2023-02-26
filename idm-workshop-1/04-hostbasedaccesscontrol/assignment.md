@@ -26,7 +26,7 @@ tabs:
   type: terminal
   hostname: idmclient
 difficulty: basic
-timelimit: 1200
+timelimit: 5760
 ---
 <!-- markdownlint-disable MD033 -->
 ## Welcome to challenge 4
@@ -266,6 +266,9 @@ Access granted: True
   Not matched rules: allow_systemd-user
 </pre>
 
-Now try at the command line to ssh from the idmserver in your environment to the idmclient as bob. What happens?
+Now try at the command line to ssh from the idmserver in your environment to the idmclient as ***bob***. What happens?
+Now try at the command line to ssh from the idmserver in your environment to the idmclient as ***alice***. What happens?
+
+Is this what you expected?
 
 You have successfully completed the section on HBAC rules. Let's look at sudo rules next.

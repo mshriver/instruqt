@@ -29,11 +29,10 @@ description: |
   * SSH user and host key management
   * Kerberos ticket policy
   * External IdP support (OAuth 2.0 / Cloud Integration )
-
 icon: https://storage.googleapis.com/instruqt-frontend/img/tracks/default.png
 tags: []
 owner: rhel
 developers:
 - parmstro@redhat.com
 show_timer: true
-checksum: "3381897878392317995"
+checksum: "8112579632151840332"

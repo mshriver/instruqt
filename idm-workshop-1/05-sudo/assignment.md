@@ -232,7 +232,7 @@ Bob also can't restart the httpd service using sudo. You will find that the erro
 As a webadmin controlling the web services ***bob*** needs to run both ``su -l`` and ``sudo``. Make sure that both commands are added to the list of allowed services in the host based access control rule **allow_webadmins_webservers_sshd**
 
 ```bash
-ipa hbacrule-add-service webadmin_webservers \
+ipa hbacrule-add-service allow_webadmins_webservers_sshd \
     --hbacsvcs=sudo --hbacsvcs=su-l
 ```
 Ensure that you logout of the client system and relogin as ***bob***. Now you should be able to use the appropriate commands. However, notice that bob still can't restart httpd
@@ -313,7 +313,7 @@ Try again.
 
 Verify that bob restarted the web server...
 ```bash
-sudo systemctl startus httpd
+sudo systemctl status httpd
 ```
 Is there a problem?
 
